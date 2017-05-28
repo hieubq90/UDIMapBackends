@@ -1,0 +1,25 @@
+################
+# Base Setting #
+################
+server_listen_endpoint: 0.0.0.0:27105
+db_connection: postgresql://hieubq@127.0.0.1:27104/udimap?disable=verify-full&password=lambt2015
+max_idle_conns: 5
+max_open_conns: 10
+# Conn Max Lifetime Durations In Minutes
+conn_max_life_time: 10
+
+
+###################
+# Crawler Setting #
+###################
+interval_time: 1
+
+
+##################
+# Source Setting #
+##################
+udi_map_endpoint: http://118.69.111.83/WebService.asmx
+udi_map_key: jud8$%6jP#!hfCV
+get_camera_soap_action: http://udchcmc.local/getCamera
+get_tram_do_mua_soap_action: http://udchcmc.local/getDSTramdomua
+get_tram_do_trieu_soap_action: http://udchcmc.local/getDSTramdotrieu

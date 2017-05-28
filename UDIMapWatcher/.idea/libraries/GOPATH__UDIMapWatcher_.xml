@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;UDIMapWatcher&gt;">
+    <CLASSES>
+      <root url="file:///zserver/go/gopath/src/golang.org" />
+      <root url="file:///zserver/go/gopath/src/git.apache.org" />
+      <root url="file:///zserver/go/gopath/src/github.com" />
+      <root url="file:///zserver/go/gopath/src/gopkg.in" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file:///zserver/go/gopath/src/golang.org" />
+      <root url="file:///zserver/go/gopath/src/git.apache.org" />
+      <root url="file:///zserver/go/gopath/src/github.com" />
+      <root url="file:///zserver/go/gopath/src/gopkg.in" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>

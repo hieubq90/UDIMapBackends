@@ -1,0 +1,183 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/Bowery/prompt",
+			"repository": "https://github.com/Bowery/prompt",
+			"revision": "0f1139e9a1c74b57ccce6bdb3cd2f7cd04dd3449",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/achiku/soapc",
+			"repository": "https://github.com/achiku/soapc",
+			"revision": "cfbdfe6e4caffe57a9cba89996e8b1cedb512be0",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/achiku/xml",
+			"repository": "https://github.com/achiku/xml",
+			"revision": "6df680e7a3231de7c4877300309e9bb950f084cb",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/denisenkom/go-mssqldb",
+			"repository": "https://github.com/denisenkom/go-mssqldb",
+			"revision": "e3bd523cf238e14637d0e028becc25651098a138",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/forestgiant/sliceutil",
+			"repository": "https://github.com/forestgiant/sliceutil",
+			"revision": "94783f95db6c58ab095b288839b769ca549dd4b4",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/go-sql-driver/mysql",
+			"repository": "https://github.com/go-sql-driver/mysql",
+			"revision": "382e13d099fcf5f5994290892ab258fbebbdc5e3",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/hieubq90/go-commons-pool",
+			"repository": "https://github.com/hieubq90/go-commons-pool",
+			"revision": "7f3ff34ad1aa0ebc43ade4eb4cb665128413838d",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/hieubq90/thrift-utils",
+			"repository": "https://github.com/hieubq90/thrift-utils",
+			"revision": "feddcc878c8fea2a6a77ed611f93564484812a9d",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/jinzhu/gorm",
+			"repository": "https://github.com/jinzhu/gorm",
+			"revision": "9acaa33324bbcc78239a1c913d4f1292c12177b9",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/jinzhu/inflection",
+			"repository": "https://github.com/jinzhu/inflection",
+			"revision": "1c35d901db3da928c72a72d8458480cc9ade058f",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/jolestar/go-commons-pool/collections",
+			"repository": "https://github.com/jolestar/go-commons-pool",
+			"revision": "ea1b8e7dc17a4153f3b780ab6c0e6249ce4b6118",
+			"branch": "master",
+			"path": "/collections"
+		},
+		{
+			"importpath": "github.com/jolestar/go-commons-pool/concurrent",
+			"repository": "https://github.com/jolestar/go-commons-pool",
+			"revision": "ea1b8e7dc17a4153f3b780ab6c0e6249ce4b6118",
+			"branch": "master",
+			"path": "/concurrent"
+		},
+		{
+			"importpath": "github.com/julienschmidt/httprouter",
+			"repository": "https://github.com/julienschmidt/httprouter",
+			"revision": "975b5c4c7c21c0e3d2764200bf2aa8e34657ae6e",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/labstack/gommon/color",
+			"repository": "https://github.com/labstack/gommon",
+			"revision": "1121fd3e243c202482226a7afe4dcd07ffc4139a",
+			"branch": "master",
+			"path": "/color"
+		},
+		{
+			"importpath": "github.com/lib/pq",
+			"repository": "https://github.com/lib/pq",
+			"revision": "2704adc878c21e1329f46f6e56a1c387d788ff94",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/mattn/go-colorable",
+			"repository": "https://github.com/mattn/go-colorable",
+			"revision": "ded68f7a9561c023e790de24279db7ebf473ea80",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/mattn/go-isatty",
+			"repository": "https://github.com/mattn/go-isatty",
+			"revision": "fc9e8d8ef48496124e79ae0df75490096eccf6fe",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/mattn/go-sqlite3",
+			"repository": "https://github.com/mattn/go-sqlite3",
+			"revision": "cf7286f069c3ef596efcc87781a4653a2e7607bd",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/mkideal/cli",
+			"repository": "https://github.com/mkideal/cli",
+			"revision": "a9c1104566927924fdb041d198f05617492913f9",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/mkideal/pkg/debug",
+			"repository": "https://github.com/mkideal/pkg",
+			"revision": "3e188c9e7ecc83d0fe7040a9161ce3c67885470d",
+			"branch": "master",
+			"path": "/debug"
+		},
+		{
+			"importpath": "github.com/mkideal/pkg/expr",
+			"repository": "https://github.com/mkideal/pkg",
+			"revision": "3e188c9e7ecc83d0fe7040a9161ce3c67885470d",
+			"branch": "master",
+			"path": "/expr"
+		},
+		{
+			"importpath": "github.com/mkideal/pkg/osutil/pid",
+			"repository": "https://github.com/mkideal/pkg",
+			"revision": "3e188c9e7ecc83d0fe7040a9161ce3c67885470d",
+			"branch": "master",
+			"path": "/osutil/pid"
+		},
+		{
+			"importpath": "github.com/mkideal/pkg/version",
+			"repository": "https://github.com/mkideal/pkg",
+			"revision": "3e188c9e7ecc83d0fe7040a9161ce3c67885470d",
+			"branch": "master",
+			"path": "/version"
+		},
+		{
+			"importpath": "github.com/pkg/errors",
+			"repository": "https://github.com/pkg/errors",
+			"revision": "c605e284fe17294bda444b34710735b29d1a9d90",
+			"branch": "master"
+		},
+		{
+			"importpath": "golang.org/x/crypto/md4",
+			"repository": "https://go.googlesource.com/crypto",
+			"revision": "7e9105388ebff089b3f99f0ef676ea55a6da3a7e",
+			"branch": "master",
+			"path": "/md4"
+		},
+		{
+			"importpath": "golang.org/x/net/context",
+			"repository": "https://go.googlesource.com/net",
+			"revision": "b8b13433cc9973c2ad1c7217f0cf4a59d00b135d",
+			"branch": "master",
+			"path": "/context"
+		},
+		{
+			"importpath": "golang.org/x/sys/unix",
+			"repository": "https://go.googlesource.com/sys",
+			"revision": "a55a76086885b80f79961eacb876ebd8caf3868d",
+			"branch": "master",
+			"path": "/unix"
+		},
+		{
+			"importpath": "gopkg.in/yaml.v2",
+			"repository": "https://gopkg.in/yaml.v2",
+			"revision": "cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b",
+			"branch": "v2"
+		}
+	]
+}

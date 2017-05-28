@@ -1,0 +1,3 @@
+cd ./thrift
+echo "start gen common & bigset thrift"
+/zserver/thrift/thrift9/thrift -r --gen go  -out ../vendor/src thrift_notify.thrift

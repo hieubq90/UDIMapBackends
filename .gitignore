@@ -1,0 +1,6 @@
+
+*.a
+
+UDIMapWatcher/bin/udi-map-api
+
+UDIMapWatcher/bin/udi-map-watcher
