@@ -12,7 +12,7 @@ conn_max_life_time: 10
 ###################
 # Crawler Setting #
 ###################
-interval_time: 1
+interval_time: 10
 
 
 ##################
@@ -23,3 +23,5 @@ udi_map_key: jud8$%6jP#!hfCV
 get_camera_soap_action: http://udchcmc.local/getCamera
 get_tram_do_mua_soap_action: http://udchcmc.local/getDSTramdomua
 get_tram_do_trieu_soap_action: http://udchcmc.local/getDSTramdotrieu
+get_ds_quan_trac_ngap_soap_action: http://udchcmc.local/getDSQuantracngap
+get_ds_diem_ngap_soap_action: http://udchcmc.local/getDSDiemNgap

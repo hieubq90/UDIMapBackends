@@ -34,10 +34,12 @@ func (s *Server) ping(w http.ResponseWriter, r *http.Request, _ httprouter.Param
 
 func (s *Server) getCustomers(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	currentInfo := &models.CurrentInfo{
-		Err:             0,
-		ListCameras:     make([]*models.Camera, 0),
-		ListRainTracker: make([]*models.TramDoMua, 0),
-		ListTideTracker: make([]*models.TramDoTrieu, 0),
+		Err:              0,
+		ListCameras:      make([]*models.Camera, 0),
+		ListRainTracker:  make([]*models.TramDoMua, 0),
+		ListTideTracker:  make([]*models.TramDoTrieu, 0),
+		ListFloodTracker: make([]*models.TramQuanTracNgap, 0),
+		ListFloodPoint:   make([]*models.FloodPoint, 0),
 	}
 	listCameras := make([]*models.Camera, 0)
 	if errCamera := s.db.Find(&listCameras).Error; errCamera == nil {
@@ -52,6 +54,16 @@ func (s *Server) getCustomers(w http.ResponseWriter, r *http.Request, _ httprout
 	listTideTracker := make([]*models.TramDoTrieu, 0)
 	if errCamera := s.db.Find(&listTideTracker).Error; errCamera == nil {
 		currentInfo.ListTideTracker = listTideTracker
+	}
+
+	listFloodTracker := make([]*models.TramQuanTracNgap, 0)
+	if errCamera := s.db.Find(&listFloodTracker).Error; errCamera == nil {
+		currentInfo.ListFloodTracker = listFloodTracker
+	}
+
+	listFloodPoint := make([]*models.FloodPoint, 0)
+	if errCamera := s.db.Find(&listFloodPoint).Error; errCamera == nil {
+		currentInfo.ListFloodPoint = listFloodPoint
 	}
 
 	writeJSONResult(w, currentInfo)

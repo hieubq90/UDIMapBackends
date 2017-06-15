@@ -111,12 +111,16 @@ var crawl = &cli.Command{
 		db.AutoMigrate(&models.Camera{})
 		db.AutoMigrate(&models.TramDoMua{})
 		db.AutoMigrate(&models.TramDoTrieu{})
+		db.AutoMigrate(&models.TramQuanTracNgap{})
+		db.AutoMigrate(&models.FloodPoint{})
 
 		for {
 			fmt.Println(time.Now().Format("02-01-2006 15:04"), "Start Crawling...")
 			CrawlCamera(db)
 			CrawlDSTramDoMua(db)
 			CrawlDSTramDoTrieu(db)
+			CrawlQuanTracNgap(db)
+			CrawlDiemNgap(db)
 			fmt.Println(time.Now().Format("02-01-2006 15:04"), "Done Crawling...")
 			time.Sleep(time.Duration(config.AppConfig.IntervalTime) * time.Minute)
 		}
@@ -260,6 +264,131 @@ func CrawlDSTramDoTrieu(db *gorm.DB) {
 					db.Create(c)
 				}
 			}
+		}
+	}
+}
+
+func CrawlQuanTracNgap(db *gorm.DB) {
+	fmt.Println("CrawlQuanTracNgap")
+	client := soap.NewClient(config.AppConfig.UDIMapEndpoint, false, nil)
+	body := models.GetDSQuanTracNgapBodyContent{Key: config.AppConfig.UDIMapKey}
+	resp := models.GetDSQuanTracNgapResponse{}
+	crawErr := client.Call(config.AppConfig.GetDSQuanTracNgapSoapAction, body, &resp, nil)
+	if crawErr != nil {
+		fmt.Println("err: ", crawErr)
+	} else {
+		listQuanTracNgap := make([]*models.QuanTracNgap, 0)
+		if parseErr := json.Unmarshal([]byte(resp.Result), &listQuanTracNgap); parseErr != nil {
+			fmt.Println(time.Now().Unix(), "CrawlQuanTracNgap | parse json error", parseErr)
+		} else {
+			existedQuanTracNgap := make([]*models.TramQuanTracNgap, 0)
+			currentQuanTracNgap := make([]*models.TramQuanTracNgap, 0)
+			db.Find(&existedQuanTracNgap)
+			if len(listQuanTracNgap) > 0 {
+				for _, c := range listQuanTracNgap {
+					lat, _ := strconv.ParseFloat(c.Lat, 64)
+					lng, _ := strconv.ParseFloat(c.Lng, 64)
+					id, _ := strconv.ParseInt(c.IDText, 10, 64)
+					tramQuanTracNgap := &models.TramQuanTracNgap{
+						ID:         id,
+						Name:       c.Name,
+						Address:    c.Address,
+						Lat:        lat,
+						Lng:        lng,
+						FloodDeep:  c.FloodDeep,
+						StatusID:   c.StatusID,
+						Status:     c.Status,
+						StatusText: c.StatusText,
+						LastUpdate: c.LastUpdate,
+					}
+					currentQuanTracNgap = append(currentQuanTracNgap, tramQuanTracNgap)
+				}
+			}
+			if len(existedQuanTracNgap) > 0 && len(currentQuanTracNgap) > 0 {
+				// remove if camera is not contained in current cameras
+				for _, c := range existedQuanTracNgap {
+					if !sliceutils.ContainTramQuanTracNgap(currentQuanTracNgap, c) {
+						db.Delete(c)
+					}
+				}
+			}
+			if len(currentQuanTracNgap) > 0 && len(existedQuanTracNgap) > 0 {
+				for _, c := range currentQuanTracNgap {
+					if sliceutils.ContainTramQuanTracNgap(existedQuanTracNgap, c) {
+						db.Save(c)
+					} else {
+						db.Create(c)
+					}
+				}
+			} else {
+				for _, c := range currentQuanTracNgap {
+					db.Create(c)
+				}
+			}
+
+		}
+	}
+}
+
+func CrawlDiemNgap(db *gorm.DB) {
+	fmt.Println("CrawlDiemNgap")
+	client := soap.NewClient(config.AppConfig.UDIMapEndpoint, false, nil)
+	body := models.GetDSDiemNgapBodyContent{Key: config.AppConfig.UDIMapKey}
+	resp := models.GetDSDiemNgapResponse{}
+	crawErr := client.Call(config.AppConfig.GetDSDiemNgapSoapAction, body, &resp, nil)
+	if crawErr != nil {
+		fmt.Println("err: ", crawErr)
+	} else {
+		listDiemNgap := make([]*models.DiemNgap, 0)
+		if parseErr := json.Unmarshal([]byte(resp.Result), &listDiemNgap); parseErr != nil {
+			fmt.Println(time.Now().Unix(), "CrawlDiemNgap | parse json error", parseErr)
+		} else {
+			existedFloodPoints := make([]*models.FloodPoint, 0)
+			currentFloodPoints := make([]*models.FloodPoint, 0)
+			db.Find(&existedFloodPoints)
+			if len(listDiemNgap) > 0 {
+				for _, c := range listDiemNgap {
+					lat, _ := strconv.ParseFloat(c.Lat, 64)
+					lng, _ := strconv.ParseFloat(c.Lng, 64)
+					floodPoint := &models.FloodPoint{
+						ID:           c.ID,
+						RoadName:     c.RoadName,
+						DistrictName: c.DistrictName,
+						From:         c.From,
+						To:           c.To,
+						Lat:          lat,
+						Lng:          lng,
+						FloodDeep:    c.FloodDeep,
+						Status:       c.Status,
+						Expected:     c.Expected,
+						Warning:      c.Warning,
+						LastUpdate:   c.LastUpdate,
+					}
+					currentFloodPoints = append(currentFloodPoints, floodPoint)
+				}
+			}
+			if len(existedFloodPoints) > 0 && len(currentFloodPoints) > 0 {
+				// remove if camera is not contained in current cameras
+				for _, c := range existedFloodPoints {
+					if !sliceutils.ContainFloodPoint(currentFloodPoints, c) {
+						db.Delete(c)
+					}
+				}
+			}
+			if len(currentFloodPoints) > 0 && len(existedFloodPoints) > 0 {
+				for _, c := range currentFloodPoints {
+					if sliceutils.ContainFloodPoint(existedFloodPoints, c) {
+						db.Save(c)
+					} else {
+						db.Create(c)
+					}
+				}
+			} else {
+				for _, c := range currentFloodPoints {
+					db.Create(c)
+				}
+			}
+
 		}
 	}
 }

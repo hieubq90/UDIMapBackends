@@ -11,17 +11,19 @@ import (
 
 type AppConfiguration struct {
 	// Base Setting
-	ServerListenEndpoint     string `yaml:"server_listen_endpoint"`
-	DBConnection             string `yaml:"db_connection"`
-	MaxIdleConns             int    `yaml:"max_idle_conns"`
-	MaxOpenConns             int    `yaml:"max_open_conns"`
-	ConnMaxLifetime          int    `yaml:"conn_max_life_time"`
-	IntervalTime             int    `yaml:"interval_time"`
-	UDIMapEndpoint           string `yaml:"udi_map_endpoint"`
-	UDIMapKey                string `yaml:"udi_map_key"`
-	GetCameraSoapAction      string `yaml:"get_camera_soap_action"`
-	GetTramDoMuaSoapAction   string `yaml:"get_tram_do_mua_soap_action"`
-	GetTramDoTrieuSoapAction string `yaml:"get_tram_do_trieu_soap_action"`
+	ServerListenEndpoint        string `yaml:"server_listen_endpoint"`
+	DBConnection                string `yaml:"db_connection"`
+	MaxIdleConns                int    `yaml:"max_idle_conns"`
+	MaxOpenConns                int    `yaml:"max_open_conns"`
+	ConnMaxLifetime             int    `yaml:"conn_max_life_time"`
+	IntervalTime                int    `yaml:"interval_time"`
+	UDIMapEndpoint              string `yaml:"udi_map_endpoint"`
+	UDIMapKey                   string `yaml:"udi_map_key"`
+	GetCameraSoapAction         string `yaml:"get_camera_soap_action"`
+	GetTramDoMuaSoapAction      string `yaml:"get_tram_do_mua_soap_action"`
+	GetTramDoTrieuSoapAction    string `yaml:"get_tram_do_trieu_soap_action"`
+	GetDSQuanTracNgapSoapAction string `yaml:"get_ds_quan_trac_ngap_soap_action"`
+	GetDSDiemNgapSoapAction     string `yaml:"get_ds_diem_ngap_soap_action"`
 }
 
 // AppConfig is global instance of AppConfiguration

@@ -22,6 +22,42 @@ func IndexOfCamera(camera *models.Camera, cameras []*models.Camera) int {
 	return -1
 }
 
+func ContainTramQuanTracNgap(list []*models.TramQuanTracNgap, item *models.TramQuanTracNgap) bool {
+	for _, c := range list {
+		if c.ID == item.ID {
+			return true
+		}
+	}
+	return false
+}
+
+func IndexOfTramQuanTracNgap(list []*models.TramQuanTracNgap, item *models.TramQuanTracNgap) int {
+	for i, c := range list {
+		if c.ID == item.ID {
+			return i
+		}
+	}
+	return -1
+}
+
+func ContainFloodPoint(list []*models.FloodPoint, item *models.FloodPoint) bool {
+	for _, c := range list {
+		if c.ID == item.ID {
+			return true
+		}
+	}
+	return false
+}
+
+func IndexOfFloodPoint(list []*models.FloodPoint, item *models.FloodPoint) int {
+	for i, c := range list {
+		if c.ID == item.ID {
+			return i
+		}
+	}
+	return -1
+}
+
 func ContainTramDoMua(listTram []*models.TramDoMua, tram *models.TramDoMua) bool {
 	for _, c := range listTram {
 		if c.ID == tram.ID {
